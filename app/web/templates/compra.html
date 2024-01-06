@@ -1,5 +1,4 @@
 {% extends 'layout.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
 <h1 class="maincont-ttl">PEDIDO NRO : {{pedido.nro_pedido}}</h1>
     <ul class="b-crumbs">
@@ -9,18 +8,18 @@
 <div class="page-styling">
     <div class="woocommerce prod-litems section-list">
             <h2>Fecha : {{pedido.fecha_registro}}</h2>
-            {% for detalle in pedido.pedidodetalle_set.all %}
+            {%for detalle in pedido.pedidodetalle_set.all %}
             <article class="prod-li sectls">
                 <div class="prod-li-inner">
                     <a href="#" class="prod-li-img">
-                        <img src="{{ detalle.producto.imagen.url }}" alt="">
+                        <img src="{{detalle.producto.imagen.url}}" alt="">
                     </a>
                     <div class="prod-li-cont">
                         <div class="prod-li-ttl-wrap">
                             <p>
                                 <a href="#">{{detalle.producto.categoria}}</a>
                             </p>
-                            <h3><a href="product.html">{{ detalle.producto.nombre }}</a></h3>
+                            <h3><a href="product.html">{{detalle.producto.nombre}}</a></h3>
                         </div>
                         <div class="prod-li-prices">
                             <div class="prod-li-price-wrap">
@@ -46,7 +45,7 @@
     </div>
     <div class="cart-actions">
             <div class="cart-collaterals">
-                {{ formpaypal.render }}
+                {{formPaypal.render}}
                 <div class="order-total">
                     <p class="cart-totals-ttl">Total</p>
                     <p class="cart-totals-val">${{pedido.monto_total}}</p>
